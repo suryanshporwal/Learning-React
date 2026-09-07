@@ -23,39 +23,24 @@ function App() {
         <section id="core-concepts">
         <h2>Core Concepts</h2>
         <ul>
-          <li>
-            {/* <CoreConcepts image={CORE_CONCEPTS[0].image}
-           conceptHeading={CORE_CONCEPTS[0].conceptHeading}
-           conceptData={CORE_CONCEPTS[0].conceptData}/> */}
-           
-            {/* Instead use Spread operator --> ...ObjectContainingArray[index] */}
-
-            <CoreConcepts {...CORE_CONCEPTS[0]}/>
-          </li>
-          <li>
-            <CoreConcepts {...CORE_CONCEPTS[1]}/>
-          </li>
-          <li>
-            <CoreConcepts {...CORE_CONCEPTS[2]}/>
-          </li>
-          <li>
-            <CoreConcepts {...CORE_CONCEPTS[3]}/>
-          </li>
+          {CORE_CONCEPTS.map((conceptItem)=>
+            <li><CoreConcepts key={conceptItem.title} {...conceptItem}/></li>
+          )}
         </ul>
         </section>
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-              <TabButton onSelect={()=>handleSelect("components")}>
+              <TabButton isSelected={selectedTopic==='components'} onSelect={()=>handleSelect("components")}>
                 {EXAMPLES.components.title}
                 </TabButton>
-              <TabButton onSelect={()=>handleSelect("jsx")}>
+              <TabButton isSelected={selectedTopic==='jsx'} onSelect={()=>handleSelect("jsx")}>
                 {EXAMPLES.jsx.title}
                 </TabButton>
-              <TabButton onSelect={()=>handleSelect("props")}>
+              <TabButton isSelected={selectedTopic==='props'} onSelect={()=>handleSelect("props")}>
                 {EXAMPLES.props.title} 
                 </TabButton>
-              <TabButton onSelect={()=>handleSelect("state")}>
+              <TabButton isSelected={selectedTopic==='state'} onSelect={()=>handleSelect("state")}>
                 {EXAMPLES.state.title}
                 </TabButton>
           </menu>
@@ -74,5 +59,27 @@ function App() {
    </div>
   );
 }
+
+
+// Longer static method used previously to render the list 
+
+{/* <li> */}
+            {/* <CoreConcepts image={CORE_CONCEPTS[0].image}
+           conceptHeading={CORE_CONCEPTS[0].conceptHeading}
+           conceptData={CORE_CONCEPTS[0].conceptData}/> */}
+           
+            {/* Instead use Spread operator --> ...ObjectContainingArray[index] */}
+
+            {/* <CoreConcepts {...CORE_CONCEPTS[0]}/>
+          </li>
+          <li>
+            <CoreConcepts {...CORE_CONCEPTS[1]}/>
+          </li>
+          <li>
+            <CoreConcepts {...CORE_CONCEPTS[2]}/>
+          </li>
+          <li>
+            <CoreConcepts {...CORE_CONCEPTS[3]}/>
+          </li> */}
 
 export default App;

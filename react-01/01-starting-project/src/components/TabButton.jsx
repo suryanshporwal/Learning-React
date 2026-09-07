@@ -1,9 +1,9 @@
-export default function TabButton({onSelect,children}){
+export default function TabButton({onSelect,children,isSelected}){
     // document.querySelector('button').addEventListener('click',()=>{}); // We can't do it like this
     // local functions have access to props as well which is a benefit 
     console.log("tab button component loaded");
     return (
     <li>
-        <button onClick={onSelect}> {children} </button>
+        <button className={isSelected? "active": undefined} onClick={onSelect}> {children} </button>
     </li>);
 }
