@@ -15,7 +15,7 @@ export default function Examples(){
     
     return (<Section title ="Examples" id='examples'>
           <menu>
-              <TabButton isSelected={selectedTopic==='components'} onSelect={()=>handleSelect("components")}>
+              {/* <TabButton isSelected={selectedTopic==='components'} onSelect={()=>handleSelect("components")}>
                 {EXAMPLES.components.title}
                 </TabButton>
               <TabButton isSelected={selectedTopic==='jsx'} onSelect={()=>handleSelect("jsx")}>
@@ -26,7 +26,16 @@ export default function Examples(){
                 </TabButton>
               <TabButton isSelected={selectedTopic==='state'} onSelect={()=>handleSelect("state")}>
                 {EXAMPLES.state.title}
-                </TabButton>
+                </TabButton> */}
+              {Object.entries(EXAMPLES).map(([key, example]) => (
+                  <TabButton
+                    key={key}
+                    isSelected={selectedTopic === key}
+                    onSelect={() => handleSelect(key)}
+                  >
+                    {example.title}
+                  </TabButton>
+                ))}
           </menu>
           {!selectedTopic ? (<p>Please select a topic.</p>):null}
           {selectedTopic ? (<div id="tab-content">
